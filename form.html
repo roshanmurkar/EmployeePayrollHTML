@@ -1,0 +1,143 @@
+<html>
+    <head>
+        <title>EmployeePayroll form</title>
+        <script type="text/javascript" src="newjs.js"></script>
+    </head>
+    <style>
+        th{
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-align: justify;
+        }
+        html{
+            background-color: thistle;
+        }
+        body{
+            width: 50%;
+            background-color:white;
+            margin-top: 10%;   
+            margin-left: 25%;
+            margin-bottom: 10%;
+            padding: 0 20px 20px 20px; 
+            border: 5px solid black;        
+        }
+    </style>
+    <script>
+        function saveData(){
+            console.log('save')
+            let list = JSON.parse(localStorage.getItem("EmpObjList"));
+
+            var name = document.getElementById("name").Value;
+            var profileImage = document.getElementById("profileImage").Value;
+            var gender = document.getElementById("gender").Value;
+            var department = document.getElementById("department").Value;
+            var salary = document.getElementById("salary").Value;
+            var startDate = document.getElementById("startDate").Value;
+            var action = document.getElementById("action").Value;
+            var table = document.getElementById("myTableData").Value;
+
+            let obj = {
+                "name" : name,
+                // "profileImage" : profileImage,
+                // "gender" : gender,
+                "department" : department,
+                "salary" : salary,
+                // "startDate" : startdate,
+                // "action" : action
+            }
+
+            console.log(list);
+
+            localStorage.setItem("EmpObjList",JSON.stringify(list));
+
+        }
+    </script>
+    <body onload="load()">
+        <h1 align="center" style="margin-top: 5%;">Employee Payroll From</h1>
+            <form name="myForm"  onsubmit="return submitData()" method="POST">
+                <table align="center" >
+                    <tr>
+                        <td>Name</td>
+                        <td><input type="text"  name="fname" size="50" id="name" ></td>
+                    </tr>
+                    <tr>
+                        <td>Profile image</td>
+                        <td><input type="radio" name="profileimg" value="style1" id="profileImage"> Style1
+                        <input type="radio" name="profileimg" value="style2"> style2
+                        <input type="radio" name="profileimg" value="style3"> style3
+                        <input type="radio" name="profileimg" value="style4"> style4</td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td><input type="radio" name="gender" value="male" id="gender"> Male
+                        <input type="radio" name="gender" value="female" id="gender"> Female</td>
+                    </tr>
+                    <tr>
+                        <td>Department</td>
+                        <td><input type="checkbox" name="department" value="hr">HR
+                            <input type="checkbox" name="department" value="engineer">Engineer
+                            <input type="checkbox" name="department" value="sales">Sales
+                            <input type="checkbox" name="department" value="finance">Finance
+                            <input type="checkbox" name="department" value="other">Other
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Salary</td>
+                        <td>
+                            <select name="salary" id="salary" >
+                                <option value="selectsalary">select salary</option>
+                                <option value="25000">25000</option>
+                                <option value="30000">30000</option>
+                                <option value="35000">35000</option>
+                                <option value="40000">40000</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Start date</td>
+                        <td>
+                            <select name="Day" id="day" >
+                                <option value="day">Day</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                            <select name="Month" id="month" >
+                                <option value="month">Month</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                            <select name="Year" id="year" >
+                                <option value="year">Year</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Note</td>
+                        <td><input type="text" name="text" size="50" style="height: 50px;" s></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <button style="padding: 10px; margin-left: 140;" type="submit" name="cancel" value="cancel" id="cancel" onclick="Javascript:cancelData()">Cnacel</button>
+                            <button style="padding: 10px; margin-left: 10" type="submit" name="submit" value="submit" id="submit" onclick="function saveData()" >Submit</button>
+                            <button style="padding: 10px; margin-left: 10 " type="submit" name="reset" value="reset" id="reset" onclick="Javascript:resetData()">Reset</button>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+            </form>
+    </body>
+</html>
